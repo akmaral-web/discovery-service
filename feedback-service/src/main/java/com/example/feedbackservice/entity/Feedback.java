@@ -1,4 +1,4 @@
-package com.example.userfeedback.entity;
+package com.example.feedbackservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
