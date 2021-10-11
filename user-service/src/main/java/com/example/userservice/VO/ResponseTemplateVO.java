@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class ResponseTemplateVO {
     private User user;
     private Feedback feedback;
+    private Cart cart;
 }

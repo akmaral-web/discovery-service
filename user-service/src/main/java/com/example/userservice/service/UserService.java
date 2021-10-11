@@ -1,6 +1,7 @@
 package com.example.userservice.service;
 
 
+import com.example.userservice.VO.Cart;
 import com.example.userservice.VO.Feedback;
 import com.example.userservice.VO.ResponseTemplateVO;
 import com.example.userservice.entity.User;
@@ -24,6 +25,10 @@ public class UserService {
         return restTemplate.getForObject("http://feedback-service/feedbacks"+ userId, Feedback.class);
     }
 
+    public Cart getCartById(Long userId){
+        return restTemplate.getForObject("http://cart-service/carts"+ userId, Cart.class);
+    }
+
     public User saveUser(User user) {
         log.info("Inside saveUser of method UserService");
         return userRepository.save(user);
@@ -36,8 +41,12 @@ public class UserService {
 
         Feedback feedback = restTemplate.getForObject("http://localhost:8015/feedbacks/" + user.getFeedbackId(), Feedback.class);
 
+        Cart cart = restTemplate.getForObject("http://localhost:8016/carts/" + user.getFeedbackId(), Cart.class);
+
+
         vo.setUser(user);
         vo.setFeedback(feedback);
+        vo.setCart(cart);
         return vo;
     }
 }
