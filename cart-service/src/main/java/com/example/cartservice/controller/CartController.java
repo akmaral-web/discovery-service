@@ -7,8 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
-@RequestMapping("/carts")
+@RequestMapping("/carts/hello")
 @Slf4j
 
 public class CartController {
@@ -27,5 +28,24 @@ public class CartController {
         log.info("Inside findFeedbackById method of FeedbackController");
         return cartService.findCartById(cartId);
     }
+
+    @GetMapping
+    public String hello(){
+        return "HelloWorld";
+    }
+
+    @PostMapping("post")
+    public String helloPost(@RequestBody final String userAccount){
+        return userAccount;
+    }
+
+    @PutMapping("put")
+    public String helloPut(@RequestBody final String cardNumber){
+        return cardNumber;
+    }
+
+
+
+
 
 }

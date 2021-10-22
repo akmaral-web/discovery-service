@@ -39,9 +39,9 @@ public class UserService {
         ResponseTemplateVO vo = new ResponseTemplateVO();
         User user = userRepository.findByUserId(userId);
 
-        Feedback feedback = restTemplate.getForObject("http://localhost:8015/feedbacks/" + user.getFeedbackId(), Feedback.class);
+        Feedback feedback = restTemplate.getForObject("http://feedback-service/feedbacks/" + user.getFeedbackId(), Feedback.class);
 
-        Cart cart = restTemplate.getForObject("http://localhost:8016/carts/" + user.getFeedbackId(), Cart.class);
+        Cart cart = restTemplate.getForObject("http://cart-service/carts/" + user.getFeedbackId(), Cart.class);
 
 
         vo.setUser(user);

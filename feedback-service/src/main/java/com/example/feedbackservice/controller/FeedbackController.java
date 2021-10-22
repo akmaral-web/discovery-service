@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 @RestController
 @RequestMapping("/feedbacks")
 @Slf4j
@@ -32,4 +35,21 @@ public class FeedbackController {
     public String index(){
         return "feedback";
     }
+
+
+    @GetMapping
+    public List<Feedback> getFeedbacks(){
+        return Arrays.asList(
+                new Feedback(1L, "Not bad, available price", 4),
+                new Feedback(2L, "Very bad product. Not recommended", 2),
+                new Feedback(3L, "High quality, Works excellent", 5)
+
+        );
+    }
+
+    @GetMapping("/{feedbackInfo}")
+    public Feedback getFeedback(@PathVariable("feedbackInfo") final Long feedbackId, String comment, int rating){
+        return new Feedback(feedbackId, comment, rating);
+    }
+
 }
