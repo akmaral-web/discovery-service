@@ -6,6 +6,7 @@ import com.example.userservice.VO.Feedback;
 import com.example.userservice.VO.ResponseTemplateVO;
 import com.example.userservice.entity.User;
 import com.example.userservice.repository.UserRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,8 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public ResponseTemplateVO getUserWithFeedback(Long userId) {
+
+    public ResponseTemplateVO getUserFeedback(Long userId) {
         log.info("Inside getUserWithFeedback of method UserService");
         ResponseTemplateVO vo = new ResponseTemplateVO();
         User user = userRepository.findByUserId(userId);
@@ -46,7 +48,13 @@ public class UserService {
 
         vo.setUser(user);
         vo.setFeedback(feedback);
-        vo.setCart(cart);
+
+        vo.getUser();
+        vo.getFeedback();
         return vo;
     }
+
+
+
+
 }
