@@ -11,5 +11,5 @@ import java.util.List;
 @AllArgsConstructor
 public class UserFeedback {
     private Long userId;
-    private List<Feedback> feedback;
+    private List <Feedback> feedback;
 }
